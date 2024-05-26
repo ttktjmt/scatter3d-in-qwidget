@@ -3,6 +3,7 @@
 
 #include "myscatter3d.h"
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,5 +22,6 @@ public:
 private:
     Ui::MainWindow *ui;
     MyScatter3D *scatter;
+    QTimer *timer;
 };
 #endif // MAINWINDOW_H

@@ -8,9 +8,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     scatter = ui->MyScatterWidget;
+
+    connect(ui->addButton,      SIGNAL(clicked(bool)),  scatter,    SLOT(AddPlot()));
+    connect(ui->removeButton,   SIGNAL(clicked(bool)),  scatter,    SLOT(RemovePlot()));
+
+    timer = new QTimer(this);
+    connect(timer,              SIGNAL(timeout()),      scatter,    SLOT(RealTimePlot()));
+    timer->start(100);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete timer;
 }

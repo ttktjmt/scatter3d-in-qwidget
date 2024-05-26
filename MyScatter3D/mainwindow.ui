@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-295</y>
          <width>755</width>
-         <height>1412</height>
+         <height>1471</height>
         </rect>
        </property>
        <property name="mouseTracking">
@@ -47,7 +47,7 @@
              </size>
             </property>
             <property name="text">
-             <string>PushButton</string>
+             <string>Pseudo Button</string>
             </property>
            </widget>
           </item>
@@ -66,6 +66,36 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="addButton">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Add Plot</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="removeButton">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Remove Plot</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="MyScatter3D" name="MyScatterWidget" native="true">
@@ -102,7 +132,7 @@
              </size>
             </property>
             <property name="text">
-             <string>PushButton</string>
+             <string>Pseudo Button</string>
             </property>
            </widget>
           </item>

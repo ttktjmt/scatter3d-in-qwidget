@@ -31,6 +31,15 @@ Item {
         ListElement{ xPos: -2.55 ; yPos: 3.48 ; zPos: -0.45 }
     }
 
+    ListModel {
+        id: dataModelChange
+    }
+
+    ListModel {
+        id: dataModelRealTime
+        ListElement{ xPos: 0 ; yPos: 0 ; zPos: 0 }
+    }
+
     Item {
         id: dataView
         objectName: "dataView"
@@ -90,6 +99,49 @@ Item {
                     zPosRole: "zPos"
                 }
             }
+            Scatter3DSeries {
+                id: scatterSeriesChange
+                itemLabelFormat: "Series Change: X:@xLabel Y:@yLabel Z:@zLabel"
+                itemSize: 0.2
+                baseColor: "purple"
+                mesh: Abstract3DSeries.MeshCylinder
+
+                ItemModelScatterDataProxy {
+                    itemModel: dataModelChange
+                    xPosRole: "xPos"
+                    yPosRole: "yPos"
+                    zPosRole: "zPos"
+                }
+            }
+            Scatter3DSeries {
+                id: scatterSeriesRealTime
+                itemLabelFormat: "Series RealTime: X:@xLabel Y:@yLabel Z:@zLabel"
+                itemSize: 0.2
+                baseColor: "red"
+                mesh: Abstract3DSeries.MeshSphere
+
+                ItemModelScatterDataProxy {
+                    itemModel: dataModelRealTime
+                    xPosRole: "xPos"
+                    yPosRole: "yPos"
+                    zPosRole: "zPos"
+                }
+            }
+        }
+
+        // functions
+        function addPlot(x, y, z) {
+            dataModelChange.append({ "xPos": x, "yPos": y, "zPos": z })
+        }
+        function removePlot() {
+            if (dataModelChange.count <= 0) {
+                console.log("No data to remove")
+            } else {
+                dataModelChange.remove(dataModelChange.count - 1)  // remove the last element
+            }
+        }
+        function realTimePlot(x, y, z) {
+            dataModelRealTime.set(0, { "xPos": x, "yPos": y, "zPos": z })
         }
     }
 }
